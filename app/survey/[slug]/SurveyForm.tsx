@@ -345,7 +345,7 @@ export default function SurveyForm({ survey, rulesUrl, prefill = null }: { surve
             <label className="consent">
               <input type="checkbox" name="raffle_entry" />
               <span>
-                Enter me in the {survey.raffle.prize ?? "gift card"} drawing. No purchase necessary. <a href={rulesUrl}>Official rules</a>.
+                Enter me in the {survey.raffle.prize ?? "gift card"} drawing. No purchase necessary. <a href={rulesUrl}>See the drawing rules</a>.
               </span>
             </label>
           )}
