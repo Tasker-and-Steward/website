@@ -16,7 +16,7 @@ export default function Privacy() {
         <h1>Privacy Policy</h1>
         <p className="updated">Last updated: October 31, 2026</p>
 
-        <p>Tasker &amp; Steward LLC ("Tasker &amp; Steward," "we," "us") is a Rhode Island company. This policy explains what we collect when you visit taskerandsteward.com or request a Role Report, how we use it, and the choices you have.</p>
+        <p>Tasker &amp; Steward LLC ("Tasker &amp; Steward," "we," "us") runs taskerandsteward.com. This policy explains what we collect when you visit the site or request a Role Report, how we use it, and the choices you have.</p>
 
         <h2>What we collect</h2>
         <ul>
@@ -62,7 +62,7 @@ export default function Privacy() {
 
         <h2>Contact us</h2>
         <p>
-          Tasker &amp; Steward LLC, Rhode Island
+          Tasker &amp; Steward LLC, 6 Liberty Square, PMB #361, Boston, MA 02109
           <br />
           Email: <a href="mailto:gil@taskerandsteward.com">gil@taskerandsteward.com</a>
           <br />

@@ -23,7 +23,7 @@ export default async function RulesPage({ params }: Params) {
       <LegalHeader />
       <main className="legal">
         <h1>Official rules: {survey.title} drawing</h1>
-        <p className="updated">Sponsor: Tasker &amp; Steward LLC, Rhode Island</p>
+        <p className="updated">Sponsor: Tasker &amp; Steward LLC, 6 Liberty Square, PMB #361, Boston, MA 02109</p>
 
         <h2>No purchase necessary</h2>
         <p>No purchase or payment of any kind is necessary to enter or win. A purchase will not improve your chances of winning.</p>
@@ -52,7 +52,7 @@ export default async function RulesPage({ params }: Params) {
         </p>
 
         <h2>Sponsor</h2>
-        <p>Tasker &amp; Steward LLC, Rhode Island. Questions: <a href="mailto:gil@taskerandsteward.com">gil@taskerandsteward.com</a>.</p>
+        <p>Tasker &amp; Steward LLC, 6 Liberty Square, PMB #361, Boston, MA 02109. Questions: <a href="mailto:gil@taskerandsteward.com">gil@taskerandsteward.com</a>.</p>
       </main>
       <SiteFooter />
     </>
