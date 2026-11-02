@@ -43,7 +43,7 @@ export default async function SurveyPage({ params, searchParams }: PageProps) {
               <GiftCard prize={survey.raffle.prize ?? "$100 Gift Card"} />
               <p>
                 Finish the survey and you can enter the drawing for a {survey.raffle.prize ?? "gift card"}. No purchase necessary.{" "}
-                <a href={rulesUrl}>Drawing rules</a> are at the bottom of this page.
+                <a href={rulesUrl}>Review drawing rules</a>.
               </p>
             </div>
           )}
@@ -62,12 +62,11 @@ export default async function SurveyPage({ params, searchParams }: PageProps) {
         )}
         {survey.raffle.enabled && (
           <p id="drawing-rules" className="survey-rules">
-            <strong>Drawing rules.</strong> No purchase necessary, and a purchase won&apos;t improve your odds. Open to legal US
-            residents 18 and older, one entry per person. Employees of Tasker &amp; Steward LLC and their immediate families
-            aren&apos;t eligible. To enter, finish the survey and check the drawing box{closes ? ` by 11:59 pm Eastern on ${closes}` : ""}.
-            One winner of a {prize} will be drawn at random within seven days after the survey closes and notified by email; odds
-            depend on the number of entries. If the winner doesn&apos;t reply within seven days, a new winner is drawn. No cash
-            alternative. Void where prohibited. Sponsor: Tasker &amp; Steward LLC, 6 Liberty Square, PMB #361, Boston, MA 02109.
+            <strong>Drawing rules.</strong> Open to legal US residents 18 and older, one entry per person. To enter, finish the
+            survey and check the drawing box{closes ? ` by 11:59 pm Eastern on ${closes}` : ""}. One winner of a {prize.toLowerCase()} will be
+            drawn at random within seven days after the survey closes and notified by email. If the winner doesn&apos;t reply within
+            seven days, a new winner is drawn. No cash alternative. Void where prohibited. Sponsor: Tasker &amp; Steward LLC, 6 Liberty
+            Square, PMB #361, Boston, MA 02109.
           </p>
         )}
       </main>
