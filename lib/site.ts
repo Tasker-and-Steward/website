@@ -3,7 +3,7 @@ export const SITE_NAME = "Tasker & Steward";
 export const LEGAL_NAME = "Tasker & Steward LLC";
 export const TAGLINE = "AI staffing with human accountability";
 export const PHONE = "+1-401-300-9921";
-export const EMAIL = "gil@taskerandsteward.com";
+export const EMAIL = "hello@taskerandsteward.com";
 
 export const HOME_TITLE = "AI Staffing Agency for Small Businesses | Tasker & Steward";
 export const HOME_DESCRIPTION =

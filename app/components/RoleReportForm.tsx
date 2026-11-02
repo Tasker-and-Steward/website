@@ -69,8 +69,8 @@ export default function RoleReportForm() {
     } catch (err) {
       setError(
         err instanceof Error && err.message
-          ? `${err.message} You can also email gil@taskerandsteward.com.`
-          : "We couldn't send your request. Please try again, or email gil@taskerandsteward.com."
+          ? `${err.message} You can also email hello@taskerandsteward.com.`
+          : "We couldn't send your request. Please try again, or email hello@taskerandsteward.com."
       );
       setStatus("error");
     }
