@@ -307,6 +307,7 @@ img, svg { max-width: 100%; }
 .survey-raffle p { flex: 1 1 220px; margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-2); }
 .giftcard { width: 220px; height: auto; flex: 0 0 auto; filter: drop-shadow(0 10px 22px rgba(20, 36, 58, 0.25)); }
 .survey-run-by { margin: 20px 0 0; font-size: 13px; line-height: 1.55; color: var(--ink-3); }
+.survey-rules { margin: 32px 0 0; font-size: 12px; line-height: 1.6; color: var(--ink-3); scroll-margin-top: 24px; }
 .survey-card { margin-top: 28px; background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; }
 .survey-card h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1.25; }
 .survey-card h2:focus { outline: none; }

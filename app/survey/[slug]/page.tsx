@@ -28,7 +28,8 @@ export default async function SurveyPage({ params, searchParams }: PageProps) {
   const t = (await searchParams).t;
   const prefill = survey.open ? await getPrefill(survey.slug, typeof t === "string" ? t : undefined) : null;
   const closes = closeDate(survey.closesAt);
-  const rulesUrl = survey.raffle.rulesUrl || `/survey/${survey.slug}/rules`;
+  const rulesUrl = "#drawing-rules";
+  const prize = survey.raffle.prize ?? "$100 gift card";
   return (
     <>
       <LegalHeader />
@@ -42,7 +43,7 @@ export default async function SurveyPage({ params, searchParams }: PageProps) {
               <GiftCard prize={survey.raffle.prize ?? "$100 Gift Card"} />
               <p>
                 Finish the survey and you can enter the drawing for a {survey.raffle.prize ?? "gift card"}. No purchase necessary.{" "}
-                <a href={rulesUrl}>Official rules</a>.
+                <a href={rulesUrl}>Drawing rules</a> are at the bottom of this page.
               </p>
             </div>
           )}
@@ -58,6 +59,16 @@ export default async function SurveyPage({ params, searchParams }: PageProps) {
             <h2>This survey is closed</h2>
             <p>Thank you for your interest. If you took part, the results report is on its way.</p>
           </section>
+        )}
+        {survey.raffle.enabled && (
+          <p id="drawing-rules" className="survey-rules">
+            <strong>Drawing rules.</strong> No purchase necessary, and a purchase won&apos;t improve your odds. Open to legal US
+            residents 18 and older, one entry per person. Employees of Tasker &amp; Steward LLC and their immediate families
+            aren&apos;t eligible. To enter, finish the survey and check the drawing box{closes ? ` by 11:59 pm Eastern on ${closes}` : ""}.
+            One winner of a {prize} will be drawn at random within seven days after the survey closes and notified by email; odds
+            depend on the number of entries. If the winner doesn&apos;t reply within seven days, a new winner is drawn. No cash
+            alternative. Void where prohibited. Sponsor: Tasker &amp; Steward LLC, 6 Liberty Square, PMB #361, Boston, MA 02109.
+          </p>
         )}
       </main>
       <SiteFooter />
