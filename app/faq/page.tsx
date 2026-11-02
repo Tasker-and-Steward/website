@@ -42,7 +42,7 @@ export default function FaqPage() {
         <h1>Frequently asked questions</h1>
         <p className="lead">
           How Role Reports work, what an agent costs, what happens during the trial, and who answers when you call. Don&apos;t see your question? Email{" "}
-          <a href="mailto:gil@taskerandsteward.com">gil@taskerandsteward.com</a>.
+          <a href="mailto:hello@taskerandsteward.com">hello@taskerandsteward.com</a>.
         </p>
 
         {FAQ_GROUPS.map((group) => (
