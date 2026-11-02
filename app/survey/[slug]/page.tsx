@@ -43,7 +43,7 @@ export default async function SurveyPage({ params, searchParams }: PageProps) {
               <GiftCard prize={survey.raffle.prize ?? "$100 Gift Card"} />
               <p>
                 Finish the survey and you can enter the drawing for a {survey.raffle.prize ?? "gift card"}. No purchase necessary.{" "}
-                <a href={rulesUrl}>Drawing rules</a> are at the bottom of this page.
+                <a href={rulesUrl}>Review drawing rules</a>.
               </p>
             </div>
           )}
