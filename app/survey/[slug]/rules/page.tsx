@@ -52,7 +52,7 @@ export default async function RulesPage({ params }: Params) {
         </p>
 
         <h2>Sponsor</h2>
-        <p>Tasker &amp; Steward LLC, 6 Liberty Square, PMB #361, Boston, MA 02109. Questions: <a href="mailto:gil@taskerandsteward.com">gil@taskerandsteward.com</a>.</p>
+        <p>Tasker &amp; Steward LLC, 6 Liberty Square, PMB #361, Boston, MA 02109. Questions: <a href="mailto:survey@taskerandsteward.com">survey@taskerandsteward.com</a>.</p>
       </main>
       <SiteFooter />
     </>
