@@ -52,6 +52,9 @@ export default function Home() {
             </a>
             <div className="topbar-right">
               <span className="soon">Opening soon</span>
+              <a href="/contact" className="toplink">
+                Contact
+              </a>
               <a href="#join" className="btn btn-ghost">
                 Get a free Role Report
               </a>

@@ -5,9 +5,14 @@ export default function LegalHeader() {
         <a className="wordmark" href="/">
           Tasker <span className="amp">&amp;</span> Steward
         </a>
-        <a href="/#join" className="btn btn-ghost">
-          Get a free Role Report
-        </a>
+        <div className="topbar-right">
+          <a href="/contact" className="toplink">
+            Contact
+          </a>
+          <a href="/#join" className="btn btn-ghost">
+            Get a free Role Report
+          </a>
+        </div>
       </div>
     </div>
   );

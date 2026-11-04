@@ -14,13 +14,13 @@ export default function Privacy() {
       <LegalHeader />
       <main className="legal">
         <h1>Privacy Policy</h1>
-        <p className="updated">Last updated: October 31, 2026</p>
+        <p className="updated">Last updated: November 4, 2026</p>
 
         <p>Tasker &amp; Steward LLC ("Tasker &amp; Steward," "we," "us") runs taskerandsteward.com. This policy explains what we collect when you visit the site or request a Role Report, how we use it, and the choices you have.</p>
 
         <h2>What we collect</h2>
         <ul>
-          <li>Information you give us on our forms: your name, work email, company, company size, industry, the role you're hiring for, the job description or posting link, and, if you choose to give it, your mobile number.</li>
+          <li>Information you give us on our forms: your name, work email, company, company size, industry, the role you're hiring for, the job description or posting link, and, if you choose to give it, your mobile number. If you use our contact form, we also collect your message, the topic you chose and, if you give it, your phone number.</li>
           <li>Your text message consent, if you check the box, along with the date and time and the wording you agreed to.</li>
           <li>If you take one of our surveys: your answers, the contact details you give, whether you asked for the results report, entered a drawing or agreed to our monthly email, and the link you came from. We report survey results only in summary and never publish who said what.</li>
           <li>Basic technical information our hosting provider records, such as IP address, browser type and pages visited, used to keep the site secure and working.</li>

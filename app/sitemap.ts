@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const posts = allInsights();
   return [
     { url: `${SITE_URL}/`, lastModified: UPDATED, changeFrequency: "weekly", priority: 1 },
+    { url: `${SITE_URL}/contact`, lastModified: new Date("2026-11-04"), changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE_URL}/faq`, lastModified: new Date("2026-10-30"), changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/privacy`, lastModified: UPDATED, changeFrequency: "yearly", priority: 0.2 },
     { url: `${SITE_URL}/sms-terms`, lastModified: UPDATED, changeFrequency: "yearly", priority: 0.2 },
