@@ -25,6 +25,9 @@ export default function Contact() {
         <p className="contact-direct">
           Prefer email? Reach us at <a href="mailto:hello@taskerandsteward.com">hello@taskerandsteward.com</a>.
         </p>
+        <p className="contact-direct">
+          Mail: Tasker &amp; Steward LLC, 6 Liberty Square, PMB #361, Boston, MA 02109
+        </p>
       </main>
       <SiteFooter />
     </>
