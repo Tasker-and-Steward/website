@@ -90,7 +90,7 @@ export function organizationJsonLd() {
     description:
       "Tasker & Steward is an AI staffing agency. We review the duties in a job you're hiring for, build and place an AI agent for the repeatable work, and assign a Steward, a real person who manages the agent and answers for its results.",
     email: EMAIL,
-    address: { "@type": "PostalAddress", addressRegion: "RI", addressCountry: "US" },
+    address: { "@type": "PostalAddress", streetAddress: "6 Liberty Square, PMB #361", addressLocality: "Boston", addressRegion: "MA", postalCode: "02109", addressCountry: "US" },
     areaServed: { "@type": "Country", name: "United States" },
     contactPoint: [
       { "@type": "ContactPoint", contactType: "sales", email: EMAIL, areaServed: "US", availableLanguage: "English" },
