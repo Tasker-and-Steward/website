@@ -63,6 +63,9 @@ img, svg { max-width: 100%; }
 .wordmark:hover { color: var(--sand); }
 .topbar-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 .soon { font-size: 14px; color: var(--on-navy-2); }
+.toplink { font-size: 15px; font-weight: 600; color: var(--sand); text-decoration: none; padding: 10px 2px; }
+.toplink:hover { text-decoration: underline; text-underline-offset: 4px; color: var(--sand); }
+.toplink:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 .hero-grid { display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start; padding: 64px 0 96px; }
 .hero-copy { flex: 1 1 460px; min-width: 0; padding-top: 24px; }
 .hero-kicker { margin: 0 0 22px; font-size: 13px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--rose); }
@@ -233,6 +236,9 @@ img, svg { max-width: 100%; }
 .legal p, .legal ul { margin: 12px 0 0; }
 .legal .updated { font-size: 14px; color: var(--ink-3); margin-top: 10px; }
 .legal-top { background: var(--navy); padding: 0 24px; }
+.contact-page .form { margin-top: 28px; box-shadow: none; border: 1px solid var(--line); }
+.contact-page .contact-alt { font-size: 15px; color: var(--ink-3); }
+.contact-page .contact-direct { margin-top: 24px; font-size: 15px; }
 
 @media (max-width: 520px) {
   .section { padding: 72px 20px; }
