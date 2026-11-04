@@ -62,7 +62,8 @@ img, svg { max-width: 100%; }
 .wordmark { font-family: var(--display); font-size: 23px; color: var(--sand); text-decoration: none; }
 .wordmark:hover { color: var(--sand); }
 .topbar-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-.soon { font-size: 14px; color: var(--on-navy-2); }
+.soon { font-size: 12px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--on-navy-2); border: 1px solid var(--navy-line); border-radius: 999px; padding: 6px 12px; margin-right: 18px; white-space: nowrap; }
+@media (max-width: 520px) { .soon { margin-right: 0; } }
 .toplink { font-size: 15px; font-weight: 600; color: var(--sand); text-decoration: none; padding: 10px 2px; }
 .toplink:hover { text-decoration: underline; text-underline-offset: 4px; color: var(--sand); }
 .toplink:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
