@@ -32,7 +32,7 @@ ${FAQS.map(([q, a]) => `### ${q}\n${a}`).join("\n\n")}
 - SMS Terms: ${SITE_URL}/sms-terms
 
 ## Contact
-Tasker & Steward LLC, 6 Liberty Square, PMB #361, Boston, MA 02109. Email hello@taskerandsteward.com. Phone (401) 300-9921.
+Tasker & Steward LLC, 6 Liberty Square, PMB #361, Boston, MA 02109. Email hello@taskerandsteward.com.
 `;
   return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" } });
 }

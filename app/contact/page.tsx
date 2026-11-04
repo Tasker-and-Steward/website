@@ -23,7 +23,7 @@ export default function Contact() {
         </p>
         <ContactForm />
         <p className="contact-direct">
-          Prefer email or phone? Reach us at <a href="mailto:hello@taskerandsteward.com">hello@taskerandsteward.com</a> or (401) 300-9921.
+          Prefer email? Reach us at <a href="mailto:hello@taskerandsteward.com">hello@taskerandsteward.com</a>.
         </p>
       </main>
       <SiteFooter />

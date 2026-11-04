@@ -33,7 +33,7 @@ export default function SmsTerms() {
 
         <h2>Help</h2>
         <p>
-          Reply HELP for help, or contact us at <a href="mailto:hello@taskerandsteward.com">hello@taskerandsteward.com</a> or (401) 300-9921.
+          Reply HELP for help, or contact us at <a href="mailto:hello@taskerandsteward.com">hello@taskerandsteward.com</a>.
         </p>
 
         <h2>Carriers</h2>

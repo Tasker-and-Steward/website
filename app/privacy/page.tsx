@@ -65,8 +65,6 @@ export default function Privacy() {
           Tasker &amp; Steward LLC, 6 Liberty Square, PMB #361, Boston, MA 02109
           <br />
           Email: <a href="mailto:hello@taskerandsteward.com">hello@taskerandsteward.com</a>
-          <br />
-          Phone: (401) 300-9921
         </p>
       </main>
       <SiteFooter />
