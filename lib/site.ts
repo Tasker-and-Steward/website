@@ -3,6 +3,7 @@ export const SITE_NAME = "Tasker & Steward";
 export const LEGAL_NAME = "Tasker & Steward LLC";
 export const TAGLINE = "AI staffing with human accountability";
 export const EMAIL = "hello@taskerandsteward.com";
+export const PHONE = "+1-617-237-6870";
 
 export const HOME_TITLE = "AI Staffing Agency for Small Businesses | Tasker & Steward";
 export const HOME_DESCRIPTION =
@@ -90,10 +91,11 @@ export function organizationJsonLd() {
     description:
       "Tasker & Steward is an AI staffing agency. We review the duties in a job you're hiring for, build and place an AI agent for the repeatable work, and assign a Steward, a real person who manages the agent and answers for its results.",
     email: EMAIL,
+    telephone: PHONE,
     address: { "@type": "PostalAddress", streetAddress: "6 Liberty Square, PMB #361", addressLocality: "Boston", addressRegion: "MA", postalCode: "02109", addressCountry: "US" },
     areaServed: { "@type": "Country", name: "United States" },
     contactPoint: [
-      { "@type": "ContactPoint", contactType: "sales", email: EMAIL, areaServed: "US", availableLanguage: "English" },
+      { "@type": "ContactPoint", contactType: "sales", telephone: PHONE, email: EMAIL, areaServed: "US", availableLanguage: "English" },
     ],
     knowsAbout: [
       "AI agents",

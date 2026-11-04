@@ -23,7 +23,7 @@ export default function Contact() {
         </p>
         <ContactForm />
         <p className="contact-direct">
-          Prefer email? Reach us at <a href="mailto:hello@taskerandsteward.com">hello@taskerandsteward.com</a>.
+          Prefer email or phone? Reach us at <a href="mailto:hello@taskerandsteward.com">hello@taskerandsteward.com</a> or <a href="tel:+16172376870">(617) 237-6870</a>.
         </p>
         <p className="contact-direct">
           Mail: Tasker &amp; Steward LLC, 6 Liberty Square, PMB #361, Boston, MA 02109
