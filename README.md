@@ -24,3 +24,8 @@ A successful submit fires the GA4 `generate_lead` event (mark it as a key event 
 - `/` landing page
 - `/privacy` Privacy Policy
 - `/sms-terms` SMS Terms (needed for Twilio A2P 10DLC registration)
+
+## Website activity tracking
+`app/components/Tracker.tsx` (in the root layout) sets a first-party visitor cookie (`ts_vid`, 13 months) and a session cookie (`ts_sid`, 30 minutes), then beacons each page view to `/api/t`. That route forwards it to the CRM (`/api/public/web-events`) after responding, with the visitor's IP and browser, which the CRM stores only as hashes. A `?ts=` token from a CRM email link is sent once, then removed from the address bar. Browsers sending Global Privacy Control or Do Not Track are not tracked.
+
+Form routes read the visitor cookie and pass it to the CRM, so a submission ties the browser's earlier visits to the person: `/api/role-report` and `/api/survey/[slug]` include it in the CRM call, and `/api/contact` and `/api/newsletter` log a form submission (`lib/visitor.ts`). Uses the existing `CRM_LEAD_WEBHOOK_*` settings.

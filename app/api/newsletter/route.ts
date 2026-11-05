@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { subscribeToNewsletter } from "@/lib/newsletter";
+import { logFormSubmission } from "@/lib/visitor";
 
 export const runtime = "nodejs";
 
@@ -21,5 +22,6 @@ export async function POST(req: Request) {
   }
   const ok = await subscribeToNewsletter(email, firstName || undefined);
   if (!ok) return NextResponse.json({ error: "We couldn't sign you up right now. Please try again." }, { status: 502 });
+  await logFormSubmission(req, { name: "Newsletter signup", summary: "Signed up for the monthly email", email, page: clean(body.page, 500) || null });
   return NextResponse.json({ ok: true });
 }

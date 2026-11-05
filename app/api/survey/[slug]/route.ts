@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { crmFetch } from "@/lib/crm";
 import { subscribeToNewsletter } from "@/lib/newsletter";
+import { readVisitor } from "@/lib/visitor";
 
 export const runtime = "nodejs";
 
@@ -23,6 +24,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ slug: s
   const email = clean(body.email, 254).toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "Please enter a valid work email." }, { status: 400 });
 
+  const visitor = readVisitor(req);
   const payload = {
     token: clean(body.token, 64) || null,
     answers: typeof body.answers === "object" && body.answers ? body.answers : {},
@@ -41,6 +43,10 @@ export async function POST(req: Request, { params }: { params: Promise<{ slug: s
     utm_content: clean(body.utm_content, 100) || null,
     ip_address: req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || null,
     user_agent: clean(req.headers.get("user-agent"), 400) || null,
+    // This browser's visitor id, so the CRM ties its earlier visits to the person.
+    visitor_id: visitor?.id ?? null,
+    session_id: visitor?.session_id ?? null,
+    page_path: `/survey/${slug}`,
   };
 
   const res = await crmFetch(`/api/public/surveys/${encodeURIComponent(slug)}/responses`, { method: "POST", body: JSON.stringify(payload) });

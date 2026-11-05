@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { subscribeToNewsletter } from "@/lib/newsletter";
+import { logFormSubmission } from "@/lib/visitor";
 
 export const runtime = "nodejs";
 
@@ -8,7 +9,7 @@ const esc = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string);
 
 // The general contact form at /contact. Emails the team through Resend with
-// the sender as reply-to. (Role Report requests have their own route, which
+// the sender as reply-to, and logs the submission on the CRM activity feed. (Role Report requests have their own route, which
 // also files them in the CRM.)
 export async function POST(req: Request) {
   let body: Record<string, unknown>;
@@ -85,5 +86,12 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json({ error: "We couldn't send your message right now." }, { status: 502 });
   }
+  // The person's marketing activity feed in the CRM.
+  await logFormSubmission(req, {
+    name: "Contact form",
+    summary: [msg.topic, msg.company, msg.newsletter ? "subscribed to the newsletter" : ""].filter(Boolean).join(" · "),
+    email: msg.email,
+    page: msg.page,
+  });
   return NextResponse.json({ ok: true });
 }
