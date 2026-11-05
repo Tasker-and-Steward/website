@@ -7,6 +7,8 @@ import "@fontsource/libre-franklin/latin-500.css";
 import "@fontsource/libre-franklin/latin-600.css";
 import "@fontsource/libre-franklin/latin-700.css";
 import Script from "next/script";
+import { Suspense } from "react";
+import Tracker from "./components/Tracker";
 import "./globals.css";
 import { HOME_DESCRIPTION, HOME_TITLE, SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -56,6 +58,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         {children}
+        <Suspense fallback={null}>
+          <Tracker />
+        </Suspense>
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
         <Script id="ga4" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];

@@ -14,7 +14,7 @@ export default function Privacy() {
       <LegalHeader />
       <main className="legal">
         <h1>Privacy Policy</h1>
-        <p className="updated">Last updated: November 4, 2026</p>
+        <p className="updated">Last updated: November 5, 2026</p>
 
         <p>Tasker &amp; Steward LLC ("Tasker &amp; Steward," "we," "us") runs taskerandsteward.com. This policy explains what we collect when you visit the site or request a Role Report, how we use it, and the choices you have.</p>
 
@@ -24,7 +24,13 @@ export default function Privacy() {
           <li>Your text message consent, if you check the box, along with the date and time and the wording you agreed to.</li>
           <li>If you take one of our surveys: your answers, the contact details you give, whether you asked for the results report, entered a drawing or agreed to our monthly email, and the link you came from. We report survey results only in summary and never publish who said what.</li>
           <li>Basic technical information our hosting provider records, such as IP address, browser type and pages visited, used to keep the site secure and working.</li>
+          <li>Which pages of our site you visit and where you came from, recorded with a first-party cookie (see Cookies and site activity below).</li>
         </ul>
+
+        <h2>Cookies and site activity</h2>
+        <p>We set two cookies of our own: one that recognizes your browser for up to 13 months, and one that groups the pages you view in a single visit and expires after 30 minutes of inactivity. With them we record the pages you view, the time, the site or campaign that sent you, and the forms you submit. Your IP address and browser details are stored only in a scrambled (hashed) form, used to connect a click in one of our emails to the visit it started.</p>
+        <p>This activity stays anonymous unless you identify yourself, for example by filling in one of our forms, opening a personal survey link, or clicking a link in an email we sent you. After that, we connect your visits to the information we hold about you so we can follow up on what interests you. We do not use these cookies for advertising and we do not sell this information.</p>
+        <p>If your browser sends a Global Privacy Control or Do Not Track signal, we do not set these cookies or record your visits. You can also delete or block cookies in your browser settings. We also use Google Analytics to understand overall traffic.</p>
 
         <h2>How we use it</h2>
         <ul>

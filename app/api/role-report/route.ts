@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { subscribeToNewsletter } from "@/lib/newsletter";
+import { readVisitor } from "@/lib/visitor";
 
 export const runtime = "nodejs";
 
@@ -54,6 +55,8 @@ export async function POST(req: Request) {
     ip: req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || null,
     user_agent: clean(req.headers.get("user-agent"), 300),
   };
+  // This browser's visitor id, so the CRM ties its earlier visits to the person.
+  const visitor = readVisitor(req, clean(body.page, 500));
 
   const missing = (["name", "email", "company", "size", "industry", "role", "posting"] as const).filter((k) => !lead[k]);
   if (missing.length) return NextResponse.json({ error: "Please fill in every required field." }, { status: 400 });
@@ -80,7 +83,7 @@ export async function POST(req: Request) {
           "Content-Type": "application/json",
           Authorization: `Bearer ${process.env.CRM_LEAD_WEBHOOK_SECRET ?? ""}`,
         },
-        body: JSON.stringify(lead),
+        body: JSON.stringify({ ...lead, visitor }),
       });
       results.push(r.ok ? "crm" : `crm_error_${r.status}`);
     } catch {
