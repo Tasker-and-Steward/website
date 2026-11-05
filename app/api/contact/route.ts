@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { subscribeToNewsletter } from "@/lib/newsletter";
-import { logFormSubmission } from "@/lib/visitor";
+import { crmFetch } from "@/lib/crm";
+import { readVisitor } from "@/lib/visitor";
 
 export const runtime = "nodejs";
 
@@ -9,7 +10,8 @@ const esc = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string);
 
 // The general contact form at /contact. Emails the team through Resend with
-// the sender as reply-to, and logs the submission on the CRM activity feed. (Role Report requests have their own route, which
+// the sender as reply-to, then files it in the CRM (a new Lead if the sender
+// isn't known yet). (Role Report requests have their own route, which
 // also files them in the CRM.)
 export async function POST(req: Request) {
   let body: Record<string, unknown>;
@@ -86,12 +88,27 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json({ error: "We couldn't send your message right now." }, { status: 502 });
   }
-  // The person's marketing activity feed in the CRM.
-  await logFormSubmission(req, {
-    name: "Contact form",
-    summary: [msg.topic, msg.company, msg.newsletter ? "subscribed to the newsletter" : ""].filter(Boolean).join(" · "),
-    email: msg.email,
-    page: msg.page,
-  });
+  // File it in the CRM: on their record if they're known, else as a new Lead,
+  // with a reply task and this browser's visits. The team already has the email,
+  // so a CRM problem doesn't fail the form.
+  try {
+    const r = await crmFetch("/api/public/contact-form", {
+      method: "POST",
+      body: JSON.stringify({
+        name: msg.name,
+        email: msg.email,
+        company: msg.company || null,
+        phone: msg.phone || null,
+        topic: msg.topic,
+        message: msg.message,
+        newsletter: msg.newsletter,
+        page: msg.page || null,
+        visitor: readVisitor(req, msg.page),
+      }),
+    });
+    if (r && !r.ok) console.error("contact: CRM error", r.status);
+  } catch {
+    console.error("contact: CRM unreachable");
+  }
   return NextResponse.json({ ok: true });
 }
