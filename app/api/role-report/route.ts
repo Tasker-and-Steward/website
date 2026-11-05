@@ -92,6 +92,10 @@ export async function POST(req: Request) {
   }
 
   // 2) Email the team. This is an internal notification, not marketing email.
+  // If the CRM refused or missed the request, the email says so loudly, so
+  // nothing is lost silently.
+  const crmFailed = Boolean(crmUrl) && !results.includes("crm");
+  if (crmFailed) console.error("role-report: CRM did not file the request", results.join(","));
   const key = process.env.RESEND_API_KEY;
   if (key) {
     const to = process.env.NOTIFY_EMAIL || "gil@taskerandsteward.com";
@@ -109,6 +113,7 @@ export async function POST(req: Request) {
       ["Page", lead.page || ""],
     ];
     const html = `<div style="font-family:Arial,sans-serif;color:#14243A">
+${crmFailed ? `<p style="background:#F6E1E1;color:#7A1D22;padding:12px;border-radius:8px;font-weight:bold">This request was NOT filed in the CRM (${esc(results.filter((r) => r.startsWith("crm")).join(", "))}). Add it by hand or forward this email to Claude.</p>` : ""}
 <h2 style="font-family:Georgia,serif;font-weight:400">New Role Report request</h2>
 <table cellpadding="6" style="border-collapse:collapse">${rows
       .map(([k, v]) => `<tr><td style="color:#4A5566;vertical-align:top">${esc(k)}</td><td><strong>${esc(v)}</strong></td></tr>`)
@@ -125,7 +130,7 @@ ${lead.sms_consent ? `<p style="font-size:12px;color:#4A5566">Consent text shown
           from,
           to: [to],
           reply_to: lead.email,
-          subject: `Role Report request: ${lead.role} at ${lead.company}`,
+          subject: `${crmFailed ? "[NOT IN CRM] " : ""}Role Report request: ${lead.role} at ${lead.company}`,
           html,
         }),
       });
