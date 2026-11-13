@@ -1,4 +1,5 @@
 import { FAQS, SITE_URL, TAGLINE } from "@/lib/site";
+import { HUB, HUB_PATH, ROLES } from "@/lib/roles";
 
 export const dynamic = "force-static";
 
@@ -25,9 +26,16 @@ Answering calls after hours, responding to web chat, following up on new leads, 
 ## Frequently asked questions
 ${FAQS.map(([q, a]) => `### ${q}\n${a}`).join("\n\n")}
 
+## Should you use AI or hire? Guides by role
+${HUB.answer}
+
+- Overview of all roles: ${SITE_URL}${HUB_PATH}
+${ROLES.map((r) => `- ${r.question} ${SITE_URL}${HUB_PATH}/${r.slug}\n  ${r.answer}`).join("\n")}
+
 ## Links
 - Home and Role Report request form: ${SITE_URL}/
 - Frequently asked questions: ${SITE_URL}/faq
+- AI or hire? Guides by role: ${SITE_URL}${HUB_PATH}
 - Privacy Policy: ${SITE_URL}/privacy
 - SMS Terms: ${SITE_URL}/sms-terms
 

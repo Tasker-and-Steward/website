@@ -4,6 +4,7 @@ import SiteFooter from "./components/SiteFooter";
 import JsonLd from "./components/JsonLd";
 import NewsletterSignup from "./components/NewsletterSignup";
 import { FAQS, HOME_FAQS, homeJsonLd } from "@/lib/site";
+import { HUB_PATH, ROLES } from "@/lib/roles";
 
 const CHIPS = [
   "Answering calls after hours",
@@ -205,6 +206,31 @@ export default function Home() {
                 <p>Every agent has a Steward, a real person on our team who writes reviews at 30, 60 and 90 days and is the one you call when something needs to change. Your Steward manages the agent, not your staff.</p>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="section" aria-labelledby="roles-h">
+          <div className="wrap">
+            <p className="eyebrow">Role by role</p>
+            <h2 id="roles-h" className="h2">
+              Weighing AI against a hire?
+            </h2>
+            <p className="lead">
+              Pick the role you're thinking about. Each guide shows which duties AI handles well today, which still need a person, and what each option costs.
+            </p>
+            <ul className="roles-grid">
+              {ROLES.map((r) => (
+                <li key={r.slug}>
+                  <a href={`${HUB_PATH}/${r.slug}`}>
+                    <strong>{r.name}</strong>
+                    <span>See what AI can take on</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a className="faq-all" href={HUB_PATH}>
+              See all roles <span aria-hidden="true">&rarr;</span>
+            </a>
           </div>
         </section>
 

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { allInsights } from "@/lib/insights";
+import { HUB_PATH, ROLES, ROLES_UPDATED } from "@/lib/roles";
 
 const UPDATED = new Date("2026-10-29");
 
@@ -9,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${SITE_URL}/`, lastModified: UPDATED, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/contact`, lastModified: new Date("2026-11-04"), changeFrequency: "yearly", priority: 0.5 },
+    { url: `${SITE_URL}${HUB_PATH}`, lastModified: new Date(ROLES_UPDATED), changeFrequency: "monthly", priority: 0.8 },
+    ...ROLES.map((r) => ({ url: `${SITE_URL}${HUB_PATH}/${r.slug}`, lastModified: new Date(ROLES_UPDATED), changeFrequency: "monthly" as const, priority: 0.8 })),
     { url: `${SITE_URL}/faq`, lastModified: new Date("2026-10-30"), changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/privacy`, lastModified: UPDATED, changeFrequency: "yearly", priority: 0.2 },
     { url: `${SITE_URL}/sms-terms`, lastModified: UPDATED, changeFrequency: "yearly", priority: 0.2 },

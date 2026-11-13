@@ -13,6 +13,7 @@ export default function SiteFooter() {
         </div>
         <nav aria-label="Legal">
           <a href="/contact">Contact</a>
+          <a href="/ai-or-hire">AI or hire?</a>
           <a href="/faq">FAQ</a>
           <a href="/insights">Monthly email</a>
           <a href="/privacy">Privacy Policy</a>

@@ -6,6 +6,7 @@ export default function LegalHeader() {
           Tasker <span className="amp">&amp;</span> Steward
         </a>
         <div className="topbar-right">
+          <span className="soon">Launching early 2027</span>
           <a href="/contact" className="toplink">
             Contact
           </a>
