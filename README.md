@@ -34,3 +34,7 @@ Form routes read the visitor cookie and pass it to the CRM, so a submission ties
 
 ## Service inquiry forms
 `/api/inquiry` handles both service-page forms. It emails the team through Resend (reply-to the sender) and files the inquiry in the CRM through `/api/public/contact-form`, with the topic "AI Governance & Security review" or "AI Consulting & Custom Build inquiry" so these leads are easy to filter. Copy, FAQs and structured data for both pages live in `lib/services.ts`. A successful submit fires GA4 `generate_lead` with `form_name` `governance_inquiry` or `consulting_inquiry`.
+
+## Search engine setup
+- **IndexNow:** after every production build on Vercel, `scripts/indexnow.mjs` sends every sitemap URL to IndexNow (Bing and partners). The key file is `public/c083043e907b8f6430e2757b84ad83c2.txt`. Preview and local builds skip it, and it never fails a build.
+- **Verification tags:** set `GOOGLE_SITE_VERIFICATION` (Search Console) and `BING_SITE_VERIFICATION` (Bing Webmaster Tools) as Production env vars in Vercel, then redeploy. Each meta tag renders only once its code is set.
