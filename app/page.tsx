@@ -197,31 +197,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section" aria-labelledby="roles-h">
-          <div className="wrap">
-            <p className="eyebrow">Role by role</p>
-            <h2 id="roles-h" className="h2">
-              Weighing AI against a hire?
-            </h2>
-            <p className="lead">
-              Pick the role you're thinking about. Each guide shows which duties AI handles well today, which still need a person, and what each option costs.
-            </p>
-            <ul className="roles-grid">
-              {ROLES.map((r) => (
-                <li key={r.slug}>
-                  <a href={`${HUB_PATH}/${r.slug}`}>
-                    <strong>{r.name}</strong>
-                    <span>See what AI can take on</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <a className="faq-all" href={HUB_PATH}>
-              See all roles <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-        </section>
-
         <section className="section" aria-labelledby="gap-h">
           <div className="wrap gap">
             <div className="gap-copy">
@@ -361,31 +336,28 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section" aria-labelledby="beyond-h">
-          <div className="wrap beyond">
-            <p className="eyebrow">Beyond the agent</p>
-            <h2 id="beyond-h" className="h2">
-              Not every problem needs a hire.
+        <section className="section" aria-labelledby="roles-h">
+          <div className="wrap">
+            <p className="eyebrow">Role by role</p>
+            <h2 id="roles-h" className="h2">
+              Weighing AI against a hire?
             </h2>
             <p className="lead">
-              Every agent we place comes with governance built in. When your business needs more than an agent, we also set up governance for the rest of your AI, advise on where AI fits, and build custom tools your team owns.
+              Pick the role you're thinking about. Each guide shows which duties AI handles well today, which still need a person, and what each option costs.
             </p>
-            <div className="guide-related">
-              <ul>
-                <li>
-                  <a href="/ai-governance">
-                    AI Governance &amp; Security
-                    <small>Policies, data rules and controls for every AI tool you use</small>
+            <ul className="roles-grid">
+              {ROLES.map((r) => (
+                <li key={r.slug}>
+                  <a href={`${HUB_PATH}/${r.slug}`}>
+                    <strong>{r.name}</strong>
+                    <span>See what AI can take on</span>
                   </a>
                 </li>
-                <li>
-                  <a href="/ai-consulting">
-                    AI Consulting &amp; Custom Builds
-                    <small>Advice, team rollout, and command centers and tools you own</small>
-                  </a>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+            <a className="faq-all" href={HUB_PATH}>
+              See all roles <span aria-hidden="true">&rarr;</span>
+            </a>
           </div>
         </section>
 

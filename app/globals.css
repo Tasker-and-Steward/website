@@ -413,8 +413,6 @@ img, svg { max-width: 100%; }
 .choice:has(input:checked) { border-color: var(--red); background: var(--blush); }
 .choice input { width: 18px; height: 18px; margin: 0; flex: 0 0 auto; accent-color: var(--red); }
 .choice input:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
-.beyond .lead { max-width: 820px; }
-.beyond .guide-related ul { margin-top: 28px; }
 
 /* Main navigation (2026-11-18) */
 .site-nav { position: relative; flex-wrap: nowrap; }
