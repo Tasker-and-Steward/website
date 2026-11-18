@@ -1,6 +1,7 @@
 import RoleReportForm from "./components/RoleReportForm";
 import { AgentIcon, ArrowIcon, RetrainIcon, RoleDocIcon, StewardIcon, TrialIcon } from "./components/icons";
 import SiteFooter from "./components/SiteFooter";
+import SiteNav from "./components/SiteNav";
 import JsonLd from "./components/JsonLd";
 import NewsletterSignup from "./components/NewsletterSignup";
 import { FAQS, HOME_FAQS, homeJsonLd } from "@/lib/site";
@@ -47,20 +48,7 @@ export default function Home() {
       <main id="main">
       <section className="hero">
         <div className="wrap">
-          <header className="topbar">
-            <a className="wordmark" href="/" aria-label="Tasker and Steward home">
-              Tasker <span className="amp">&amp;</span> Steward
-            </a>
-            <div className="topbar-right">
-              <span className="soon">Launching early 2027</span>
-              <a href="/contact" className="toplink">
-                Contact
-              </a>
-              <a href="#join" className="btn btn-ghost">
-                Get a free Role Report
-              </a>
-            </div>
-          </header>
+          <SiteNav />
 
           <div className="hero-grid">
             <div className="hero-copy">
