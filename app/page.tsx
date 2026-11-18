@@ -373,6 +373,34 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="section" aria-labelledby="beyond-h">
+          <div className="wrap beyond">
+            <p className="eyebrow">Beyond the agent</p>
+            <h2 id="beyond-h" className="h2">
+              Not every problem needs a hire.
+            </h2>
+            <p className="lead">
+              Every agent we place comes with governance built in. When your business needs more than an agent, we also set up governance for the rest of your AI, advise on where AI fits, and build custom tools your team owns.
+            </p>
+            <div className="guide-related">
+              <ul>
+                <li>
+                  <a href="/ai-governance">
+                    AI Governance &amp; Security
+                    <small>Policies, data rules and controls for every AI tool you use</small>
+                  </a>
+                </li>
+                <li>
+                  <a href="/ai-consulting">
+                    AI Consulting &amp; Custom Builds
+                    <small>Advice, team rollout, and command centers and tools you own</small>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <section className="section sand" style={{ paddingBlock: 96 }} aria-labelledby="faq-h">
           <div className="wrap faq-wrap">
             <div className="faq-head">

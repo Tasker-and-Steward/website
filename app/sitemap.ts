@@ -2,13 +2,16 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { allInsights } from "@/lib/insights";
 import { HUB_PATH, ROLES, ROLES_UPDATED } from "@/lib/roles";
+import { CONSULTING, GOVERNANCE, SERVICES_UPDATED } from "@/lib/services";
 
-const UPDATED = new Date("2026-10-29");
+const UPDATED = new Date("2026-11-18");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = allInsights();
   return [
     { url: `${SITE_URL}/`, lastModified: UPDATED, changeFrequency: "weekly", priority: 1 },
+    { url: `${SITE_URL}${GOVERNANCE.path}`, lastModified: new Date(SERVICES_UPDATED), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}${CONSULTING.path}`, lastModified: new Date(SERVICES_UPDATED), changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/contact`, lastModified: new Date("2026-11-04"), changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE_URL}${HUB_PATH}`, lastModified: new Date(ROLES_UPDATED), changeFrequency: "monthly", priority: 0.8 },
     ...ROLES.map((r) => ({ url: `${SITE_URL}${HUB_PATH}/${r.slug}`, lastModified: new Date(ROLES_UPDATED), changeFrequency: "monthly" as const, priority: 0.8 })),

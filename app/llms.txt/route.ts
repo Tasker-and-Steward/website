@@ -1,5 +1,6 @@
 import { FAQS, SITE_URL, TAGLINE } from "@/lib/site";
 import { HUB, HUB_PATH, ROLES } from "@/lib/roles";
+import { CONSULTING, GOVERNANCE } from "@/lib/services";
 
 export const dynamic = "force-static";
 
@@ -13,6 +14,22 @@ export function GET() {
 - Free Role Report: send us a job you're hiring for. We break it down duty by duty, mark which duties an AI agent can handle and which still need a person, suggest a more focused role for your hire, and show what each option costs.
 - AI agent placement: we build the agent around your hours, rules and systems, onboard it like a new hire with practice runs and a supervised first week, and place it alongside your team.
 - Stewardship: every agent has a named Steward who reviews its work weekly, writes performance reviews at 30, 60 and 90 days, and makes changes as your business changes.
+
+## Supporting services
+### ${GOVERNANCE.name} (${SITE_URL}${GOVERNANCE.path})
+${GOVERNANCE.answer}
+${GOVERNANCE.twoWays.map(([k, v]) => `- ${k} ${v}`).join("\n")}
+What a program includes:
+${GOVERNANCE.includes.map(([k, v]) => `- ${k} ${v}`).join("\n")}
+- Ongoing oversight. ${GOVERNANCE.oversight}
+${GOVERNANCE.how}
+
+### ${CONSULTING.name} (${SITE_URL}${CONSULTING.path})
+${CONSULTING.answer}
+${[...CONSULTING.consulting, ...CONSULTING.builds].map(([k, v]) => `- ${k} ${v}`).join("\n")}
+${CONSULTING.handoff} ${CONSULTING.how}
+
+${[...GOVERNANCE.faqs, ...CONSULTING.faqs].map(([q, a]) => `#### ${q}\n${a}`).join("\n\n")}
 
 ## Work agents typically take on
 Answering calls after hours, responding to web chat, following up on new leads, scheduling and reminders, entering data, confirming orders, and chasing quotes that went quiet.
@@ -34,6 +51,8 @@ ${ROLES.map((r) => `- ${r.question} ${SITE_URL}${HUB_PATH}/${r.slug}\n  ${r.answ
 
 ## Links
 - Home and Role Report request form: ${SITE_URL}/
+- AI Governance & Security: ${SITE_URL}${GOVERNANCE.path}
+- AI Consulting & Custom Builds: ${SITE_URL}${CONSULTING.path}
 - Frequently asked questions: ${SITE_URL}/faq
 - AI or hire? Guides by role: ${SITE_URL}${HUB_PATH}
 - Privacy Policy: ${SITE_URL}/privacy
