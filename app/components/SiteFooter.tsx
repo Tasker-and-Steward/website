@@ -11,8 +11,10 @@ export default function SiteFooter() {
           </span>
           <address className="footer-address">6 Liberty Square, PMB #361, Boston, MA 02109</address>
         </div>
-        <nav aria-label="Legal">
+        <nav aria-label="Site">
           <a href="/contact">Contact</a>
+          <a href="/ai-governance">AI governance</a>
+          <a href="/ai-consulting">AI consulting</a>
           <a href="/ai-or-hire">AI or hire?</a>
           <a href="/faq">FAQ</a>
           <a href="/insights">Monthly email</a>

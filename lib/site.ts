@@ -21,6 +21,7 @@ export const FAQS: [string, string][] = [
   ["What if the agent doesn't work out?", "We retrain it or replace it at no cost. Every placement starts with a 90-day trial, and it only becomes a 12-month term if you decide to keep the agent."],
   ["What happens to our data?", "Your agent only gets access to the systems its job requires, and that access is logged. You'll get a written summary of what it collects, where it's stored and who on our team can see it."],
   ["What happens if we cancel?", "You can cancel the service after the 90-day trial or at the end of your 12-month term. Your business data is always yours, and we'll give you a full export of it when the service ends. The agent itself, and the work we put into building it, stays with us."],
+  ["Do you offer anything besides AI agents?", "Yes. Every agent we place comes with governance built in, and we also offer two services on their own. AI Governance & Security sets up policies, data rules and controls for all the AI your business uses. AI Consulting & Custom Builds covers advice, team rollout and training, plus custom tools such as dashboards and command centers that your team owns."],
   ["Who's behind Tasker & Steward?", "We've spent 25 years building systems for businesses. Now we build custom AI solutions for the everyday challenges that slow them down, and we put a real person in charge of every agent we place."],
 ];
 
@@ -52,7 +53,7 @@ export const FAQ_GROUPS: { title: string; questions: string[] }[] = [
   },
   {
     title: "Your team and your data",
-    questions: ["Will this replace my staff?", "What happens to our data?", "Who's behind Tasker & Steward?"],
+    questions: ["Will this replace my staff?", "What happens to our data?", "Do you offer anything besides AI agents?", "Who's behind Tasker & Steward?"],
   },
 ];
 
@@ -105,6 +106,12 @@ export function organizationJsonLd() {
       "Appointment scheduling",
       "Job description design",
       "Home services businesses",
+      "AI governance",
+      "AI use policy",
+      "AI security",
+      "AI consulting",
+      "Custom AI development",
+      "AI dashboards and command centers",
     ],
   };
 }

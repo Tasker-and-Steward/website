@@ -22,6 +22,8 @@ A successful submit fires the GA4 `generate_lead` event (mark it as a key event 
 
 ## Pages
 - `/` landing page
+- `/ai-governance` AI Governance & Security (inquiry form posts to `/api/inquiry`)
+- `/ai-consulting` AI Consulting & Custom Builds (inquiry form posts to `/api/inquiry`)
 - `/privacy` Privacy Policy
 - `/sms-terms` SMS Terms (needed for Twilio A2P 10DLC registration)
 
@@ -29,3 +31,6 @@ A successful submit fires the GA4 `generate_lead` event (mark it as a key event 
 `app/components/Tracker.tsx` (in the root layout) sets a first-party visitor cookie (`ts_vid`, 13 months) and a session cookie (`ts_sid`, 30 minutes), then beacons each page view to `/api/t`. That route forwards it to the CRM (`/api/public/web-events`) after responding, with the visitor's IP and browser, which the CRM stores only as hashes. A `?ts=` token from a CRM email link is sent once, then removed from the address bar. Browsers sending Global Privacy Control or Do Not Track are not tracked.
 
 Form routes read the visitor cookie and pass it to the CRM, so a submission ties the browser's earlier visits to the person: `/api/role-report` and `/api/survey/[slug]` include it in the CRM call, `/api/contact` files the message in the CRM (`/api/public/contact-form`: on the person's record, else a new Lead, with a reply task), and `/api/newsletter` logs a form submission (`lib/visitor.ts`). Uses the existing `CRM_LEAD_WEBHOOK_*` settings.
+
+## Service inquiry forms
+`/api/inquiry` handles both service-page forms. It emails the team through Resend (reply-to the sender) and files the inquiry in the CRM through `/api/public/contact-form`, with the topic "AI Governance & Security review" or "AI Consulting & Custom Build inquiry" so these leads are easy to filter. Copy, FAQs and structured data for both pages live in `lib/services.ts`. A successful submit fires GA4 `generate_lead` with `form_name` `governance_inquiry` or `consulting_inquiry`.
