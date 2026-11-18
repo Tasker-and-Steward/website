@@ -9,6 +9,14 @@ export const SERVICES_UPDATED_LABEL = "November 2026";
 
 export type ListItem = [string, string];
 
+export type Callout = {
+  icon: string;
+  lead: string;
+  rest: string;
+  tiles: { icon: string; title: string; sub: string }[];
+  ways: [string, string][];
+};
+
 export type ServiceInquiryKind = "governance" | "consulting";
 
 export const COMPANY_SIZES = ["1 to 9", "10 to 49", "50 to 249", "250 or more"];
@@ -40,6 +48,21 @@ export const GOVERNANCE = {
   h1: "Your team is already using AI. Someone should be in charge of it.",
   answer:
     "AI governance is the set of rules, controls and owners that decide how a business uses AI: which tools are approved, what data can go into them, who can access them, and what happens when something goes wrong. Tasker & Steward includes governance with every AI agent we staff, and builds custom governance and security programs that cover the rest of a company's AI.",
+  callout: {
+    icon: "shield",
+    lead: "AI governance",
+    rest: "is the set of rules, controls and owners that decide how your business uses AI. It answers four questions:",
+    tiles: [
+      { icon: "tools", title: "Which tools?", sub: "What's approved, and for what" },
+      { icon: "data", title: "What data?", sub: "What can go in, and what can't" },
+      { icon: "lock", title: "Who has access?", sub: "Accounts, permissions, owners" },
+      { icon: "alert", title: "What if it goes wrong?", sub: "Who gets the call, and what happens" },
+    ],
+    ways: [
+      ["Included", "with every agent we staff"],
+      ["Custom programs", "for the rest of your AI"],
+    ],
+  } as Callout,
   hook: [
     "Someone on your staff pasted a customer email into a chatbot this week. Someone else signed up for an AI note-taker that records every call. Nobody approved either one, and nobody knows where that data went.",
     "Every AI tool in your business can see something, say something, or decide something on your behalf. Without clear rules, nobody is accountable for what it does. Governance is how you set those rules: who can use what, what data goes where, and what happens when something goes wrong. It's the difference between AI your business controls and AI that just happens to your business.",
@@ -138,6 +161,21 @@ export const CONSULTING = {
   h1: "Some work needs a hire. Some needs a tool you own.",
   answer:
     "Tasker & Steward offers AI consulting and custom AI development for small and mid-sized businesses. We help companies decide where AI fits, roll it out to their teams, and build custom tools such as command centers, dashboards, internal AI assistants and system integrations as one-time projects the client owns and maintains.",
+  callout: {
+    icon: "spark",
+    lead: "AI consulting",
+    rest: "helps you decide where AI earns its place in your business, get your team using it, and build the tools that don't exist yet. We cover four things:",
+    tiles: [
+      { icon: "compass", title: "Where AI fits", sub: "Opportunities ranked by payback" },
+      { icon: "route", title: "Rollout", sub: "What to adopt, in what order" },
+      { icon: "people", title: "Training", sub: "Hands-on, built around your work" },
+      { icon: "build", title: "Custom builds", sub: "Dashboards and tools you own" },
+    ],
+    ways: [
+      ["Fixed scope and fee", "for consulting and rollout"],
+      ["One-time builds", "you own, with optional support"],
+    ],
+  } as Callout,
   intro:
     "We staff agents for roles that need one. Sometimes the right answer is a system your own team runs instead. In those cases we design it, build it, and hand you the keys.",
   consultingHeading: "Consulting and adoption",
@@ -244,7 +282,7 @@ function serviceJsonLd(opts: {
         about: { "@id": `${url}#service` },
         breadcrumb: { "@id": `${url}#breadcrumb` },
         dateModified: SERVICES_UPDATED,
-        speakable: { "@type": "SpeakableSpecification", cssSelector: [".guide h1", ".guide-answer"] },
+        speakable: { "@type": "SpeakableSpecification", cssSelector: [".guide h1", ".svc-callout-top p"] },
         potentialAction: { "@type": "CommunicateAction", name: "Contact Tasker & Steward", target: `${url}#inquiry` },
         inLanguage: "en-US",
       },
