@@ -1,3 +1,5 @@
+import { ServiceIcon } from "./ServiceIcons";
+import type { Callout } from "@/lib/services";
 import type { ListItem } from "@/lib/services";
 
 export function Crumbs({ name }: { name: string }) {
@@ -59,5 +61,37 @@ export function Related({ links }: { links: { href: string; title: string; note:
         ))}
       </ul>
     </section>
+  );
+}
+
+export function ServiceCallout({ c }: { c: Callout }) {
+  return (
+    <div className="svc-callout">
+      <div className="svc-callout-top">
+        <ServiceIcon name={c.icon} stroke="#F4EFE4" size={52} />
+        <p>
+          <b>{c.lead}</b> {c.rest}
+        </p>
+      </div>
+      <ul className="svc-callout-grid">
+        {c.tiles.map((t) => (
+          <li className="svc-callout-tile" key={t.title}>
+            <ServiceIcon name={t.icon} stroke="#14243A" />
+            <strong>{t.title}</strong>
+            <span>{t.sub}</span>
+          </li>
+        ))}
+      </ul>
+      <ol className="svc-callout-ways">
+        {c.ways.map(([b, rest], i) => (
+          <li key={b}>
+            <i aria-hidden="true">{i + 1}</i>
+            <span>
+              <b>{b}</b> {rest}
+            </span>
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 }

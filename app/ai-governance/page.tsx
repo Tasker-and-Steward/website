@@ -3,7 +3,7 @@ import LegalHeader from "../components/LegalHeader";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import ServiceInquiryForm from "../components/ServiceInquiryForm";
-import { Crumbs, FaqSection, LeadList, Related } from "../components/ServiceBits";
+import { Crumbs, FaqSection, LeadList, Related, ServiceCallout } from "../components/ServiceBits";
 import { CONSULTING, GOVERNANCE, SERVICES_UPDATED, SERVICES_UPDATED_LABEL, governanceJsonLd } from "@/lib/services";
 
 const G = GOVERNANCE;
@@ -35,7 +35,7 @@ export default function AiGovernance() {
         <Crumbs name={G.name} />
         <p className="eyebrow">AI governance &amp; security</p>
         <h1>{G.h1}</h1>
-        <p className="guide-answer">{G.answer}</p>
+        <ServiceCallout c={G.callout} />
         <p className="guide-updated">
           Last updated <time dateTime={SERVICES_UPDATED}>{SERVICES_UPDATED_LABEL}</time>
         </p>

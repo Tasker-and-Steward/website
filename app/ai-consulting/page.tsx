@@ -3,7 +3,7 @@ import LegalHeader from "../components/LegalHeader";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import ServiceInquiryForm from "../components/ServiceInquiryForm";
-import { Crumbs, FaqSection, LeadList, Related } from "../components/ServiceBits";
+import { Crumbs, FaqSection, LeadList, Related, ServiceCallout } from "../components/ServiceBits";
 import { CONSULTING, GOVERNANCE, SERVICES_UPDATED, SERVICES_UPDATED_LABEL, consultingJsonLd } from "@/lib/services";
 
 const C = CONSULTING;
@@ -35,7 +35,7 @@ export default function AiConsulting() {
         <Crumbs name={C.name} />
         <p className="eyebrow">AI consulting &amp; custom builds</p>
         <h1>{C.h1}</h1>
-        <p className="guide-answer">{C.answer}</p>
+        <ServiceCallout c={C.callout} />
         <p className="guide-updated">
           Last updated <time dateTime={SERVICES_UPDATED}>{SERVICES_UPDATED_LABEL}</time>
         </p>

@@ -446,3 +446,26 @@ img, svg { max-width: 100%; }
   .nav-cta { justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) { .nav-bars, .nav-bars::before, .nav-bars::after { transition: none; } }
+
+/* Service-page callout under the headline (option C3, 2026-11-18) */
+.svc-callout { margin-top: 26px; background: var(--sand); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+.svc-callout-top { display: flex; gap: 18px; align-items: center; background: var(--red); padding: 26px 30px; }
+.svc-callout-top svg { flex: 0 0 auto; }
+.svc-callout-top p { margin: 0; font-size: 18px; line-height: 1.55; color: #f3e3e1; }
+.svc-callout-top b { font-family: var(--display); font-weight: 400; font-size: 22px; color: #fff; }
+.svc-callout-grid { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0; padding: 24px 30px 0; }
+.svc-callout-tile { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px 16px; text-align: center; }
+.svc-callout-tile svg { display: block; margin: 0 auto 10px; }
+.svc-callout-tile strong { display: block; font-size: 15px; color: var(--navy); }
+.svc-callout-tile span { display: block; margin-top: 4px; font-size: 13px; line-height: 1.4; color: var(--ink-3); }
+.svc-callout-ways { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; margin: 0; padding: 20px 30px 26px; }
+.svc-callout-ways li { flex: 1 1 260px; display: flex; gap: 12px; align-items: center; font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+.svc-callout-ways b { color: var(--navy); }
+.svc-callout-ways i { flex: 0 0 auto; display: inline-flex; width: 30px; height: 30px; border-radius: 50%; background: var(--navy); color: var(--sand); font-style: normal; font-weight: 700; font-size: 14px; align-items: center; justify-content: center; }
+@media (max-width: 720px) { .svc-callout-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) {
+  .svc-callout-top { flex-direction: column; align-items: flex-start; padding: 22px 20px; gap: 12px; }
+  .svc-callout-grid { padding: 18px 16px 0; gap: 10px; }
+  .svc-callout-tile { padding: 14px 10px; }
+  .svc-callout-ways { padding: 16px 16px 20px; }
+}
