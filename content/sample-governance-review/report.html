@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sample AI Governance Review | Tasker &amp; Steward</title>
+<style>
+@font-face { font-family: "Caslon"; src: url(fonts/libre-caslon-text-latin-400-normal.woff2); font-weight: 400; }
+@font-face { font-family: "Caslon"; src: url(fonts/libre-caslon-text-latin-400-italic.woff2); font-weight: 400; font-style: italic; }
+@font-face { font-family: "Caslon"; src: url(fonts/libre-caslon-text-latin-700-normal.woff2); font-weight: 700; }
+@font-face { font-family: "Franklin"; src: url(fonts/libre-franklin-latin-400-normal.woff2); font-weight: 400; }
+@font-face { font-family: "Franklin"; src: url(fonts/libre-franklin-latin-500-normal.woff2); font-weight: 500; }
+@font-face { font-family: "Franklin"; src: url(fonts/libre-franklin-latin-600-normal.woff2); font-weight: 600; }
+@font-face { font-family: "Franklin"; src: url(fonts/libre-franklin-latin-700-normal.woff2); font-weight: 700; }
+
+:root { --navy:#14243a; --red:#6e1f24; --sand:#f4efe4; --cream:#fbf8f1; --rose:#d4a5a0; --blush:#f3e3e1; --line:#e2d9c6; --ink2:#3b4656; --ink3:#5f6977; --gold:#8a6a2f; --amber:#8a5a12; --amberbg:#f6ead2; --green:#2f5d46; --greenbg:#e2eee6; }
+@page { size: Letter; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: "Franklin", Arial, sans-serif; color: var(--navy); font-size: 10.5pt; line-height: 1.55; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 8.5in; height: 11in; padding: 0.75in 0.8in 0.9in; position: relative; overflow: hidden; page-break-after: always; background: #fff; }
+.page:last-child { page-break-after: auto; }
+.foot { position: absolute; left: 0.8in; right: 0.8in; bottom: 0.45in; display: flex; justify-content: space-between; font-size: 8pt; color: var(--ink3); border-top: 1px solid var(--line); padding-top: 8px; }
+.foot b { font-family: "Caslon"; font-weight: 400; color: var(--navy); font-size: 9pt; }
+.foot b i { color: var(--red); }
+.sample-tag { display: inline-block; font-size: 7.5pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); border-radius: 3px; padding: 2px 7px; }
+h1, h2, h3 { font-family: "Caslon"; font-weight: 400; margin: 0; }
+h2 { font-size: 22pt; line-height: 1.15; margin: 10px 0 14px; }
+h3 { font-size: 13.5pt; margin: 18px 0 8px; }
+.eyebrow { font-size: 8pt; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; color: var(--red); }
+p { margin: 0 0 9px; color: var(--ink2); }
+.lead { font-size: 11.5pt; color: var(--navy); }
+
+/* Cover */
+.cover { background: var(--navy); color: #fff; padding: 0; }
+.cover-band { height: 0.32in; background: var(--red); }
+.cover-inner { padding: 0.9in 0.85in 0; }
+.wordmark { font-family: "Caslon"; font-size: 17pt; color: #fff; }
+.wordmark i { color: var(--rose); }
+.cover .sample-tag { color: var(--rose); border-color: var(--rose); margin-top: 1.5in; }
+.cover h1 { font-size: 40pt; line-height: 1.05; margin: 16px 0 14px; color: #fff; }
+.cover .client { font-family: "Caslon"; font-style: italic; font-size: 17pt; color: var(--rose); }
+.cover .desc { margin-top: 22px; max-width: 5.2in; font-size: 11pt; line-height: 1.6; color: #d9dee6; }
+.cover-meta { position: absolute; left: 0.85in; right: 0.85in; bottom: 0.85in; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #2e405a; padding-top: 16px; font-size: 9pt; color: #b5bfcc; }
+.cover-meta strong { display: block; color: #fff; font-weight: 600; font-size: 9.5pt; margin-bottom: 2px; }
+.crest { position: absolute; right: 0.7in; top: 1.9in; opacity: 0.18; }
+
+/* Summary */
+.notice { background: var(--sand); border-left: 3px solid var(--red); padding: 10px 14px; font-size: 9pt; color: var(--ink2); margin-bottom: 18px; }
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 16px 0 18px; }
+.tile { border: 1px solid var(--line); border-radius: 8px; padding: 12px 12px 10px; background: var(--cream); }
+.tile .n { font-family: "Caslon"; font-size: 26pt; line-height: 1; color: var(--navy); }
+.tile .l { font-size: 8.5pt; color: var(--ink3); margin-top: 6px; line-height: 1.35; }
+.tile.alert .n { color: var(--red); }
+.rating { display: flex; gap: 16px; align-items: center; background: var(--navy); color: #fff; border-radius: 10px; padding: 14px 18px; margin: 4px 0 18px; }
+.rating .score { font-family: "Caslon"; font-size: 30pt; line-height: 1; color: #fff; white-space: nowrap; }
+.rating .score small { font-size: 12pt; color: #b5bfcc; }
+.rating .txt { font-size: 9.5pt; color: #d9dee6; line-height: 1.5; }
+.rating .txt b { color: #fff; }
+.finding { display: flex; gap: 12px; margin-bottom: 11px; }
+.finding .num { flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%; background: var(--red); color: #fff; font-weight: 700; font-size: 9.5pt; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.finding h4 { margin: 0 0 3px; font-size: 10.5pt; font-weight: 700; color: var(--navy); }
+.finding p { margin: 0; font-size: 9.8pt; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: 8.8pt; }
+th { text-align: left; font-size: 7.5pt; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink3); font-weight: 700; border-bottom: 1.5px solid var(--navy); padding: 6px 7px; }
+td { border-bottom: 1px solid var(--line); padding: 8px 7px; vertical-align: top; color: var(--ink2); line-height: 1.4; }
+td.t { color: var(--navy); font-weight: 600; }
+td.t span { display: block; font-weight: 400; color: var(--ink3); font-size: 8pt; margin-top: 2px; }
+.pill { display: inline-block; font-size: 7.5pt; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; border-radius: 99px; padding: 2px 8px; white-space: nowrap; }
+.high { background: var(--blush); color: var(--red); }
+.med { background: var(--amberbg); color: var(--amber); }
+.low { background: var(--greenbg); color: var(--green); }
+.none { background: #ece7dc; color: var(--ink2); }
+
+/* Method */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+ul.tight { margin: 0 0 8px; padding-left: 16px; color: var(--ink2); }
+ul.tight li { margin-bottom: 5px; }
+.scale { display: grid; gap: 8px; margin-top: 6px; }
+.scale3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 0 18px; }
+.scale3 div { display: flex; flex-direction: column; gap: 5px; font-size: 8.6pt; color: var(--ink2); line-height: 1.4; border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; }
+.scale3 .pill { align-self: flex-start; }
+.scale div { display: flex; gap: 10px; align-items: baseline; font-size: 9.5pt; color: var(--ink2); }
+
+/* Plan */
+.phase { border: 1px solid var(--line); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+.phase-h { display: flex; justify-content: space-between; align-items: center; background: var(--sand); padding: 8px 14px; }
+.phase-h strong { font-family: "Caslon"; font-weight: 400; font-size: 12.5pt; }
+.phase-h span { font-size: 8pt; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--red); }
+.phase ol { margin: 0; padding: 10px 14px 6px 32px; color: var(--ink2); font-size: 9.6pt; }
+.phase li { margin-bottom: 6px; }
+.phase li b { color: var(--navy); }
+.target { display: flex; gap: 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); margin-top: 6px; }
+.target > div { flex: 1; padding: 12px 16px; }
+.target > div:first-child { background: var(--blush); }
+.target > div:last-child { background: var(--greenbg); }
+.target .k { font-size: 7.5pt; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink3); }
+.target .v { font-family: "Caslon"; font-size: 22pt; line-height: 1.1; color: var(--navy); }
+
+/* Policy excerpts */
+.excerpt { border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; background: var(--cream); }
+.excerpt .src { font-size: 7.5pt; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+.excerpt h4 { font-family: "Caslon"; font-weight: 400; font-size: 13pt; margin: 0 0 8px; color: var(--navy); }
+.excerpt p, .excerpt li { font-size: 9.6pt; color: var(--ink2); }
+.excerpt ol, .excerpt ul { margin: 0 0 8px; padding-left: 18px; }
+.excerpt li { margin-bottom: 4px; }
+
+/* Close */
+.cta { background: var(--navy); color: #fff; border-radius: 14px; padding: 24px 26px; margin-top: 18px; }
+.cta h3 { color: #fff; font-size: 18pt; margin: 0 0 8px; }
+.cta p { color: #d9dee6; }
+.cta .contact { margin-top: 12px; font-size: 10pt; color: #fff; }
+.cta .contact span { color: var(--rose); margin: 0 8px; }
+.includes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 22px; margin-top: 8px; }
+.includes div { font-size: 9.6pt; color: var(--ink2); padding-left: 14px; position: relative; }
+.includes div::before { content: ""; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+.includes b { color: var(--navy); }
+.fine { font-size: 8pt; color: var(--ink3); margin-top: 18px; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<!-- 1. Cover -->
+<section class="page cover">
+  <div class="cover-band"></div>
+  <svg class="crest" width="300" height="300" viewBox="0 0 48 48" fill="none" stroke="#d4a5a0" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="22.5"/><circle cx="24" cy="24" r="20.5" stroke-width="0.5"/><path d="M24 11 L34 15 V23 C34 30 29.5 34.5 24 37 C18.5 34.5 14 30 14 23 V15 Z"/><path d="M19.5 24 L23 27.5 L29 20.5"/></svg>
+  <div class="cover-inner">
+    <div class="wordmark">Tasker <i>&amp;</i> Steward</div>
+    <span class="sample-tag">Sample report</span>
+    <h1>AI Governance Review</h1>
+    <div class="client">Prepared for Harbor Point Home Services</div>
+    <p class="desc">This is a sample. Harbor Point is a fictional company, and every name, number and finding in this report is illustrative. It shows the structure and depth of a real Tasker &amp; Steward governance review.</p>
+  </div>
+  <div class="cover-meta">
+    <div><strong>Prepared by</strong>Tasker &amp; Steward<br>taskerandsteward.com</div>
+    <div style="text-align:right"><strong>Review period</strong>Sample edition<br>November 2026</div>
+  </div>
+</section>
+
+<!-- 2. Summary -->
+<section class="page">
+  <span class="eyebrow">Summary</span>
+  <h2>AI is already running parts of Harbor Point. Nobody is in charge of it.</h2>
+  <div class="notice"><b>About this company.</b> Harbor Point Home Services is a fictional heating, cooling and plumbing company with 40 employees, three locations, 22 field technicians and a six-person office team. It runs on Microsoft 365, a field service platform, and a website chat widget set up by a former marketing agency.</div>
+
+  <div class="tiles">
+    <div class="tile"><div class="n">7</div><div class="l">AI tools in use across the company</div></div>
+    <div class="tile alert"><div class="n">1</div><div class="l">formally approved by the business</div></div>
+    <div class="tile alert"><div class="n">5</div><div class="l">handling customer information</div></div>
+    <div class="tile alert"><div class="n">0</div><div class="l">written policies covering AI</div></div>
+  </div>
+
+  <div class="rating">
+    <div class="score">22<small>/100</small></div>
+    <div class="txt"><b>Governance maturity: Early.</b> Harbor Point has strong basics in place, including multi-factor sign-in on company email. AI use has grown around those controls rather than through them. The gaps below are common, and most of them can be closed within 60 days.</div>
+  </div>
+
+  <h3>The three findings that matter most</h3>
+  <div class="finding"><div class="num">1</div><div><h4>Customer details are going into personal chatbot accounts.</h4><p>Four office staff paste service notes, home addresses and billing disputes into their own free chatbot accounts to draft customer replies. The company doesn't own those accounts, can't see what was shared, and can't delete it if an employee leaves.</p></div></div>
+  <div class="finding"><div class="num">2</div><div><h4>Calls are being recorded without a consent process.</h4><p>Two managers use an AI note-taker that joins customer and vendor calls and records them. Harbor Point operates in states that require every party's consent to record, and nothing tells callers a recording is running.</p></div></div>
+  <div class="finding"><div class="num">3</div><div><h4>No one approves, owns or reviews AI tools.</h4><p>Six of the seven tools arrived without a decision from anyone. Nobody knows which tools are in use, what they cost, or what happens to the data they collect. When something goes wrong, there's no one whose job it is to respond.</p></div></div>
+
+  <div class="foot"><b>Tasker <i>&amp;</i> Steward</b><span>Sample AI Governance Review · Harbor Point Home Services (fictional)</span><span>2</span></div>
+</section>
+
+<!-- 3. Inventory -->
+<section class="page">
+  <span class="eyebrow">AI tool inventory</span>
+  <h2>Seven tools, one approved</h2>
+  <div class="notice"><b>How we found them.</b> We interviewed six people across the office, dispatch, field and leadership; reviewed 12 months of software subscriptions and expense reports; checked browser extensions on office computers; reviewed Microsoft 365 admin and sharing settings; and read the terms, data settings and contracts for every AI tool we found.</div>
+  <div class="scale3">
+    <div><span class="pill high">High</span><span>Customer, employee or financial data is exposed, or a legal requirement isn't met. Fix within 30 days.</span></div>
+    <div><span class="pill med">Medium</span><span>Sensitive data is involved but partly controlled, or ownership is unclear. Fix within 60 days.</span></div>
+    <div><span class="pill low">Low</span><span>Limited data and limited impact. Bring under policy at the next review.</span></div>
+  </div>
+  <table>
+    <thead><tr><th style="width:27%">Tool</th><th style="width:16%">Used by</th><th style="width:30%">What goes into it</th><th style="width:15%">Approved</th><th style="width:12%">Risk</th></tr></thead>
+    <tbody>
+      <tr><td class="t">General chatbot<span>Personal free accounts</span></td><td>Office staff (4)</td><td>Customer emails, home addresses, billing disputes</td><td>No</td><td><span class="pill high">High</span></td></tr>
+      <tr><td class="t">AI meeting note-taker<span>Personal sign-ups</span></td><td>Managers (2)</td><td>Recordings and transcripts of customer and vendor calls</td><td>No</td><td><span class="pill high">High</span></td></tr>
+      <tr><td class="t">AI writing assistant<span>Browser extension</span></td><td>Office staff (3)</td><td>Anything typed in the browser, including the CRM and online banking</td><td>No</td><td><span class="pill high">High</span></td></tr>
+      <tr><td class="t">Field service AI features<span>Call summaries, suggested replies</span></td><td>Dispatch</td><td>Customer calls, job history, technician notes</td><td>On by default</td><td><span class="pill med">Medium</span></td></tr>
+      <tr><td class="t">Website chat widget<span>AI replies, vendor-run</span></td><td>Customers</td><td>Names, phone numbers, service requests</td><td>Signed by former agency</td><td><span class="pill med">Medium</span></td></tr>
+      <tr><td class="t">AI assistant in company email<span>Microsoft 365 add-on</span></td><td>Owner, office manager</td><td>Email, shared files, financial reports</td><td>Yes</td><td><span class="pill med">Medium</span></td></tr>
+      <tr><td class="t">AI image tool<span>Marketing</span></td><td>Marketing coordinator</td><td>Before-and-after photos of customer homes</td><td>No</td><td><span class="pill low">Low</span></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:8.5pt;margin-top:8px;color:var(--ink3)">The approved email assistant still rates Medium. It can read every file the user can open, and Harbor Point's shared folders give most staff access to payroll and financial reports.</p>
+
+  <div class="foot"><b>Tasker <i>&amp;</i> Steward</b><span>Sample AI Governance Review · Harbor Point Home Services (fictional)</span><span>3</span></div>
+</section>
+
+<!-- 4. Gap assessment -->
+<section class="page">
+  <span class="eyebrow">Gap assessment</span>
+  <h2>Where Harbor Point stands today</h2>
+  <table>
+    <thead><tr><th style="width:24%">Area</th><th style="width:13%">Today</th><th style="width:49%">What we found</th><th style="width:14%">Priority</th></tr></thead>
+    <tbody>
+      <tr><td class="t">AI use policy</td><td><span class="pill none">None</span></td><td>No written rules on which tools are allowed or what they can be used for.</td><td><span class="pill high">High</span></td></tr>
+      <tr><td class="t">Data handling rules</td><td><span class="pill none">None</span></td><td>Staff have no guidance on what customer or financial information can go into AI tools.</td><td><span class="pill high">High</span></td></tr>
+      <tr><td class="t">Access and security controls</td><td><span class="pill med">Partial</span></td><td>Strong sign-in on company email, but three tools run on personal accounts the company can't control. Shared folders are open too widely.</td><td><span class="pill high">High</span></td></tr>
+      <tr><td class="t">Vendor review</td><td><span class="pill none">None</span></td><td>No one reads data terms before a tool is adopted. The chat widget contract sits with a former agency.</td><td><span class="pill med">Medium</span></td></tr>
+      <tr><td class="t">Accountability</td><td><span class="pill none">None</span></td><td>No one owns AI. New tools arrive through individual sign-ups.</td><td><span class="pill med">Medium</span></td></tr>
+      <tr><td class="t">Incident response</td><td><span class="pill none">None</span></td><td>The existing IT plan doesn't cover an AI tool exposing data or giving a customer a wrong answer.</td><td><span class="pill med">Medium</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="margin-top:24px">What's already working</h3>
+  <div class="includes" style="grid-template-columns:1fr;gap:6px;margin-bottom:6px">
+    <div><b>Multi-factor sign-in on company email.</b> The most important security control is already in place, so moving AI tools onto company accounts puts them behind it.</div>
+    <div><b>A staff handbook people actually read.</b> New hires sign it on day one, which gives the AI policy a ready home.</div>
+    <div><b>An office manager who already runs software purchasing.</b> The AI owner role fits naturally into work she's doing today.</div>
+  </div>
+  <h3 style="margin-top:20px">Maturity score</h3>
+  <p>We score governance maturity from 0 to 100 across the six areas above, weighted by the data each one protects. Harbor Point starts at 22. Completing the 90-day plan brings it to an estimated 75, which is where we'd expect a well-run company of this size to sit.</p>
+  <div class="target"><div><div class="k">Maturity today</div><div class="v">22 / 100</div></div><div><div class="k">Target after 90 days</div><div class="v">75 / 100</div></div></div>
+  <div class="foot"><b>Tasker <i>&amp;</i> Steward</b><span>Sample AI Governance Review · Harbor Point Home Services (fictional)</span><span>4</span></div>
+</section>
+
+<!-- 5. Plan -->
+<section class="page">
+  <span class="eyebrow">Recommended plan</span>
+  <h2>Ninety days, in order of risk</h2>
+  <p>Each step names an owner and a deadline in the full plan. The order follows the risk: stop the exposure first, then write the rules, then make them stick.</p>
+  <div class="phase"><div class="phase-h"><strong>First 30 days</strong><span>Stop the exposure</span></div>
+    <ol>
+      <li><b>Name an AI owner.</b> The office manager approves every new AI tool and keeps the inventory current.</li>
+      <li><b>Move chatbot use to company accounts.</b> Business accounts with data-use settings reviewed. Personal accounts are no longer used for work.</li>
+      <li><b>Pause the note-taker on outside calls</b> until there's a consent process that tells every caller a recording is running.</li>
+      <li><b>Remove the writing extension</b> from every computer used for banking, payroll or the CRM.</li>
+    </ol></div>
+  <div class="phase"><div class="phase-h"><strong>Days 31 to 60</strong><span>Set the rules</span></div>
+    <ol start="5">
+      <li><b>Publish the AI use policy and data handling rules,</b> with a one-hour training session for the whole team.</li>
+      <li><b>Review the field service AI features and the chat widget contract.</b> Confirm who can see transcripts and how long they're kept. Move the widget contract into Harbor Point's name.</li>
+      <li><b>Tighten shared folder access</b> so the email assistant can only reach what each person actually needs.</li>
+    </ol></div>
+  <div class="phase"><div class="phase-h"><strong>Days 61 to 90</strong><span>Keep it running</span></div>
+    <ol start="8">
+      <li><b>Adopt the vendor review checklist</b> for every new AI tool.</li>
+      <li><b>Add AI to the incident response plan,</b> including who calls the customer if an AI tool gets something wrong.</li>
+      <li><b>Run the first quarterly access review</b> and re-score.</li>
+    </ol></div>
+  <div class="foot"><b>Tasker <i>&amp;</i> Steward</b><span>Sample AI Governance Review · Harbor Point Home Services (fictional)</span><span>5</span></div>
+</section>
+
+<!-- 6. Policy excerpts + close -->
+<section class="page">
+  <span class="eyebrow">Sample policy excerpts</span>
+  <h2>What the rules look like on paper</h2>
+  <p>Every review ends with policies written for the business, in plain language the team will actually follow. Two short excerpts from Harbor Point's draft:</p>
+
+  <div class="excerpt">
+    <div class="src">AI Use Policy · Section 2</div>
+    <h4>Approved tools</h4>
+    <ol>
+      <li>Use only the AI tools listed in Appendix A for company work, and always sign in with your company account.</li>
+      <li>Never use a personal AI account for work that involves customers, employees or company finances.</li>
+      <li>To request a new tool, send the AI Tool Request form to the AI owner. Don't sign up first and ask later.</li>
+      <li>Don't install AI browser extensions on any computer used for banking, payroll or the CRM.</li>
+    </ol>
+  </div>
+
+  <div class="excerpt">
+    <div class="src">Data Handling Rules · Section 1</div>
+    <h4>What never goes into an AI tool</h4>
+    <ul>
+      <li>Payment card numbers, bank details, or anyone's Social Security number</li>
+      <li>Customer door codes, alarm codes, lockbox codes or gate codes</li>
+      <li>Employee pay, health, or disciplinary information</li>
+      <li>Anything a customer has asked us to keep private</li>
+    </ul>
+    <p style="margin:0">When in doubt, take out names and addresses first, or ask the AI owner.</p>
+  </div>
+
+  <div class="cta">
+    <h3>Get a review built around your business.</h3>
+    <p>This sample shows the shape of the work. A real review starts with your tools, your people and the standards you answer to, and ends with a program your team can run. Every engagement is scoped and priced before work begins, and you keep everything we write.</p>
+    <div class="includes" style="margin-top:12px">
+      <div style="color:#d9dee6"><b style="color:#fff">AI tool inventory</b> and risk ratings</div>
+      <div style="color:#d9dee6"><b style="color:#fff">Gap assessment</b> across all six areas</div>
+      <div style="color:#d9dee6"><b style="color:#fff">A prioritized plan</b> with clear owners</div>
+      <div style="color:#d9dee6"><b style="color:#fff">Policies and controls</b> written for your team</div>
+    </div>
+    <div class="contact">taskerandsteward.com/ai-governance<span>·</span>hello@taskerandsteward.com<span>·</span>(617) 237-6870</div>
+  </div>
+
+  <p class="fine">Harbor Point Home Services is fictional, and this report is a sample. The policy excerpts are illustrative, not legal advice. Your policies should be written for your business and reviewed by your legal counsel. Tasker &amp; Steward · 6 Liberty Square, PMB #361, Boston, MA 02109.</p>
+
+  <div class="foot"><b>Tasker <i>&amp;</i> Steward</b><span>Sample AI Governance Review · Harbor Point Home Services (fictional)</span><span>6</span></div>
+</section>
+
+</body>
+</html>

@@ -150,6 +150,15 @@ export const GOVERNANCE_STANDARDS = [
   "Not sure",
 ];
 
+export const SAMPLE_REPORT = {
+  pdf: "/downloads/sample-ai-governance-review.pdf",
+  cover: "/images/sample-governance-review-cover.webp",
+  eyebrow: "Free sample",
+  heading: "See what a governance review looks like.",
+  body: "Follow a fictional 40-person home services company from the seven AI tools nobody approved to a 90-day plan and the first draft of their policies. Six pages, and the same structure we use for real clients.",
+  points: ["AI tool inventory with risk ratings", "Gap assessment and maturity score", "A 90-day plan, in order of risk", "Sample policy excerpts"],
+};
+
 // ---------- AI Consulting & Custom Builds ----------
 
 export const CONSULTING = {

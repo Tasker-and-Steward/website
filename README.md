@@ -38,3 +38,6 @@ Form routes read the visitor cookie and pass it to the CRM, so a submission ties
 ## Search engine setup
 - **IndexNow:** after every production build on Vercel, `scripts/indexnow.mjs` sends every sitemap URL to IndexNow (Bing and partners). The key file is `public/c083043e907b8f6430e2757b84ad83c2.txt`. Preview and local builds skip it, and it never fails a build.
 - **Verification tags:** set `GOOGLE_SITE_VERIFICATION` (Search Console) and `BING_SITE_VERIFICATION` (Bing Webmaster Tools) as Production env vars in Vercel, then redeploy. Each meta tag renders only once its code is set.
+
+## Sample governance review download
+`/ai-governance#sample` offers the Sample AI Governance Review (a fictional company, 6 pages). `/api/sample-report` emails the reader the link, notifies the team, and files the download in the CRM with the topic "Sample governance review download". The PDF lives at `/downloads/sample-ai-governance-review.pdf`, which robots.txt keeps out of search. The source HTML is in `content/sample-governance-review/`.

@@ -3,8 +3,9 @@ import LegalHeader from "../components/LegalHeader";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import ServiceInquiryForm from "../components/ServiceInquiryForm";
+import SampleReportForm from "../components/SampleReportForm";
 import { Crumbs, FaqSection, LeadList, Related, ServiceCallout } from "../components/ServiceBits";
-import { CONSULTING, GOVERNANCE, SERVICES_UPDATED, SERVICES_UPDATED_LABEL, governanceJsonLd } from "@/lib/services";
+import { CONSULTING, GOVERNANCE, SAMPLE_REPORT, SERVICES_UPDATED, SERVICES_UPDATED_LABEL, governanceJsonLd } from "@/lib/services";
 
 const G = GOVERNANCE;
 
@@ -44,9 +45,14 @@ export default function AiGovernance() {
             {p}
           </p>
         ))}
-        <a className="btn btn-red svc-jump" href="#inquiry">
-          {G.cta.button}
-        </a>
+        <div className="svc-jump-row">
+          <a className="btn btn-red" href="#inquiry">
+            {G.cta.button}
+          </a>
+          <a className="svc-sample-link" href="#sample">
+            Or see a sample review <span aria-hidden="true">&darr;</span>
+          </a>
+        </div>
 
         <section aria-labelledby="ways-h">
           <h2 id="ways-h">{G.twoWaysHeading}</h2>
@@ -63,6 +69,21 @@ export default function AiGovernance() {
         <section aria-labelledby="includes-h">
           <h2 id="includes-h">{G.includesHeading}</h2>
           <LeadList items={G.includes} />
+        </section>
+
+        <section id="sample" className="sample-cta" aria-labelledby="sample-h">
+          <img className="sample-cover" src={SAMPLE_REPORT.cover} width={240} height={310} alt="Cover of the Sample AI Governance Review for Harbor Point Home Services, a fictional company" loading="lazy" />
+          <div className="sample-body">
+            <p className="eyebrow">{SAMPLE_REPORT.eyebrow}</p>
+            <h2 id="sample-h">{SAMPLE_REPORT.heading}</h2>
+            <p>{SAMPLE_REPORT.body}</p>
+            <ul className="sample-points">
+              {SAMPLE_REPORT.points.map((pt) => (
+                <li key={pt}>{pt}</li>
+              ))}
+            </ul>
+            <SampleReportForm />
+          </div>
         </section>
 
         <section aria-labelledby="fit-h">
