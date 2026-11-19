@@ -467,3 +467,28 @@ img, svg { max-width: 100%; }
   .svc-callout-tile { padding: 14px 10px; }
   .svc-callout-ways { padding: 16px 16px 20px; }
 }
+
+/* Sample governance review download (2026-11-18) */
+.svc-jump-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 26px; }
+.svc-sample-link { font-weight: 600; color: var(--red); text-decoration: underline; text-underline-offset: 4px; }
+.sample-cta { display: flex; gap: 32px; align-items: flex-start; margin-top: 56px; padding: 32px; background: var(--sand); border: 1px solid var(--line); border-radius: 20px; scroll-margin-top: 24px; }
+.sample-cover { flex: 0 0 auto; width: 220px; height: auto; border-radius: 6px; box-shadow: 0 14px 34px rgba(20, 36, 58, 0.22); transform: rotate(-2deg); margin-top: 6px; }
+.sample-body { flex: 1 1 auto; min-width: 0; }
+.sample-body h2 { margin-top: 6px; }
+.sample-points { margin: 14px 0 20px; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; font-size: 15px; color: var(--ink-2); }
+.sample-points li { position: relative; padding-left: 16px; }
+.sample-points li::before { content: ""; position: absolute; left: 0; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+.sample-form { display: flex; flex-direction: column; gap: 14px; }
+.sample-form .row { display: flex; gap: 14px; flex-wrap: wrap; }
+.sample-form .row .field { flex: 1 1 200px; }
+.sample-form .submit { align-self: flex-start; }
+.sample-done { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; }
+.sample-done-h { font-family: var(--display); font-size: 22px; color: var(--navy); margin: 0 0 6px; }
+.sample-done .btn { margin-top: 12px; }
+@media (max-width: 760px) {
+  .sample-cta { flex-direction: column; padding: 24px 18px; gap: 22px; }
+  .sample-cover { width: 170px; align-self: center; }
+  .sample-points { grid-template-columns: 1fr; }
+}
+.sample-form > .field { flex: 0 0 auto; }
+.sample-form .form-foot { text-align: left; }
